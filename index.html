@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carnicería La Casera - Calidad artesanal y frescura en cada corte. Descubre nuestras promociones especiales y conoce nuestro flujo de despliegue automatizado.">
+    <title>Carnicería La Casera - Calidad y Tradición</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de diseño */
+        :root {
+            --bg-color: #faf8f5;
+            --card-bg: #ffffff;
+            --text-primary: #2a2421;
+            --text-secondary: #6e6460;
+            --accent: #8c1d24; /* Carmesí elegante de carnicería */
+            --accent-hover: #6d1419;
+            --accent-light: #fdf5f5;
+            --border-color: #eae6e1;
+            --green-success: #1e4620;
+            --green-light: #edf7ed;
+            --green-pulse: #4caf50;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Estilos base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Banner de despliegue */
+        .deploy-banner {
+            background-color: var(--green-light);
+            color: var(--green-success);
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.15);
+            font-weight: 500;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--green-pulse);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+
+        /* Header */
+        .header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Tarjeta de Promoción */
+        .promo-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(42, 36, 33, 0.03);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .promo-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .promo-visual {
+            background-color: var(--accent);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decoración sutil de fondo */
+        .promo-visual::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+        }
+
+        .promo-badge {
+            background-color: #dfa83d;
+            color: var(--text-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            align-self: flex-start;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .promo-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .promo-price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+
+        .price-new {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .promo-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 600px) {
+            .promo-visual, .promo-content {
+                padding: 30px;
+            }
+            .promo-title {
+                font-size: 1.8rem;
+            }
+            .price-new {
+                font-size: 2.2rem;
+            }
+        }
+
+        .promo-subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .promo-items {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .promo-items li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .promo-items li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238c1d24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .promo-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(140, 29, 36, 0.15);
+        }
+
+        .promo-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(140, 29, 36, 0.25);
+        }
+
+        .promo-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Sección Estudiante / Info del Despliegue */
+        .info-section {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            box-shadow: 0 10px 30px rgba(42, 36, 33, 0.02);
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+        }
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .info-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .student-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent-light);
+            border: 1px solid rgba(140, 29, 36, 0.1);
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-top: 10px;
+            align-self: flex-start;
+        }
+
+        .student-avatar {
+            width: 36px;
+            height: 36px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .student-name-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .student-name-val {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .student-sub {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lista de características del deploy */
+        .deploy-features {
+            list-style: none;
+        }
+
+        .deploy-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .deploy-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--green-light);
+            color: var(--green-success);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .deploy-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner de Notificación de Despliegue -->
+    <div class="deploy-banner" id="banner-deploy">
+        <span class="pulse-dot"></span>
+        <span><strong>Pipeline de DevOps:</strong> El despliegue de esta aplicación web se ha completado automáticamente.</span>
+    </div>
+
+    <!-- Encabezado / Navegación -->
+    <header class="header">
+        <div class="logo-container">
+            <span class="logo">La Casera</span>
+            <span class="logo-subtitle">Carnicería Boutique</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="#promocion">Promoción</a>
+            <a href="#detalles">Proyecto</a>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        
+        <!-- Sección de Bienvenida (Hero) -->
+        <section class="hero" id="inicio">
+            <h1>Tradición y Sabor Casero</h1>
+            <p>Seleccionamos las mejores carnes para ofrecerte frescura, suavidad y la atención cálida que tu mesa se merece.</p>
+        </section>
+
+        <!-- Tarjeta de Promoción Ficticia -->
+        <section class="promo-card" id="promocion">
+            <div class="promo-visual">
+                <span class="promo-badge">Oferta del Fin de Semana</span>
+                <h2 class="promo-title">Combo Parrillero Familiar</h2>
+                <p class="promo-description">Todo lo necesario para una parrillada perfecta con cortes premium seleccionados a mano por nuestros maestros carniceros.</p>
+                <div class="promo-price-container">
+                    <span class="price-old">$38,500</span>
+                    <span class="price-new">$29,900</span>
+                </div>
+            </div>
+            <div class="promo-content">
+                <div>
+                    <h3 class="promo-subtitle">¿Qué incluye este Combo?</h3>
+                    <ul class="promo-items">
+                        <li><strong>1.5 kg</strong> de Asado de Tira de Exportación</li>
+                        <li><strong>1.0 kg</strong> de Vacío Premium muy tierno</li>
+                        <li><strong>800 g</strong> de Chorizo Criollo artesanal receta de la casa</li>
+                        <li><strong>1 bolsa</strong> de carbón vegetal seleccionado (Gratis)</li>
+                    </ul>
+                </div>
+                <a href="#promocion" class="promo-btn" onclick="alert('¡Gracias por tu interés! Esta es una promoción ficticia creada para fines académicos.')">
+                    Reservar mi Combo
+                </a>
+            </div>
+        </section>
+
+        <!-- Información de Despliegue y Estudiante -->
+        <section class="info-section" id="detalles">
+            
+            <!-- Bloque Estudiante -->
+            <div class="info-block">
+                <span class="info-label">Desarrollo Académico</span>
+                <h3 class="info-title">Datos del Estudiante</h3>
+                <p class="info-desc">Esta aplicación forma parte de los proyectos prácticos diseñados para comprender la infraestructura y automatización en la nube.</p>
+                
+                <div class="student-badge">
+                    <div class="student-avatar">
+                        E
+                    </div>
+                    <div class="student-name-text">
+                        <!-- AQUÍ PUEDES EDITAR TU NOMBRE FÁCILMENTE -->
+                        <span class="student-name-val">[Nombre del Estudiante]</span>
+                        <span class="student-sub">Curso de Cloud Computing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque DevOps / Deploy -->
+            <div class="info-block">
+                <span class="info-label">Infraestructura Nube</span>
+                <h3 class="info-title">Despliegue Automatizado</h3>
+                <p class="info-desc">El ciclo de vida de este sitio web está configurado para ejecutarse sin intervención manual tras cada actualización en el repositorio.</p>
+                
+                <ul class="deploy-features">
+                    <li>
+                        <span class="deploy-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </span>
+                        <span>Detección automática de cambios en la rama principal.</span>
+                    </li>
+                    <li>
+                        <span class="deploy-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </span>
+                        <span>Pipeline de CI/CD que compila y valida la entrega de contenidos.</span>
+                    </li>
+                    <li>
+                        <span class="deploy-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </span>
+                        <span>Sincronización instantánea con el servidor web en la nube.</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Carnicería La Casera. Trabajo académico de Cloud Computing.</p>
+    </footer>
+
+</body>
+</html>
